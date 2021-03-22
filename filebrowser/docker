@@ -1,0 +1,14 @@
+version: '3.0'
+services:
+  filebrowser:
+    container_name: filebrowser
+    image: filebrowser/filebrowser:latest
+    volumes:
+      - /docker:/srv
+      - ./db/filebrowser.db:/database.db
+      - ./conf/filebrowser.json:/filebrowser.json
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
+    ports:
+      - 8084:80
+    restart: unless-stopped
